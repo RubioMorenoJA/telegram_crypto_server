@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+
+    nginx:
+        build: docker/nginx_image
+        image: docker_server/nginx_image
+        container_name: docker_server_nginx_cont
+        ports:
+            - 8080:80
+        depends_on:
+            - flask_app
+
+    flask_app:
+        build: ./
+        image: docker_server/flask_image
+        container_name: docker_server_flask_cont
+        command: gunicorn --bind 0.0.0.0:5000 app:app
+        volumes:
+          - ./:/usr/src/app/
+        expose:
+            - 5000

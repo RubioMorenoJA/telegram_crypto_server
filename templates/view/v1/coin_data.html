@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/view/general/arrows.css">
+    <link rel="stylesheet" href="/static/view/v1/indicators.css">
+    <link rel="stylesheet" href="/static/view/v1/coin_data.css">
+    <title>TelegramCrytoServer App - Coin data</title>
+</head>
+<body>
+    <div id="content">
+        <header>
+            <h1 class="title">{{ coin_name }} data</h1>
+        </header>
+        <nav>
+            {% for item in combo_coins %}
+                <a class="coin_link" href="{{ get_route_from_logo(item) }}">{{ item }}</a>
+            {% endfor %}
+        </nav>
+        <div class="data_content">
+            <section>
+                <picture>
+                    <source media="(min-width: 1920px)" srcset="{{ url_for('static', filename=get_image(image_path, '_1200_900')) }}">
+                    <source media="(min-width: 1200px)" srcset="{{ url_for('static', filename=get_image(image_path, '_820_615')) }}">
+                    <img src="{{ url_for('static', filename=get_image(image_path)) }}">
+                </picture>
+            </section>
+            <aside>
+            {% for key, value in indicators.items() %}
+                <span>
+                    <div class="indicator_container">
+                        <div class="indicator_title">
+                            <span>
+                                <h3 class="indicator_name">{{ key }}</h3>
+                                <span class="indicator_name_information">
+                                    Information about the indicator:
+                                    <a href="{{ get_indicator_name_information(key) }}"
+                                       target="_blank"
+                                    >click here!</a>
+                                </span>
+                            </span>
+                        </div>
+                        <div class="indicator_body">
+                            <div class="indicator_body_value">
+                                <p class="indicator_value">{{ get_indicator_value_as_str(key, value) }}</p>
+                            </div>
+                            <div class="indicator_body_arrow">
+                                <div class="{{ get_arrow_class(key, float(value) if value else None) }}"
+                                     style="{{ get_arrow_style(key, float(value) if value else None) }}"></div>
+                            </div>
+                        </div>
+                        <div class="indicator_footer">
+                            <div class="warm_bar_container">
+                                <div class="{{ get_warm_bar(key, float(value) if value else None) }}"></div>
+                            </div>
+                        </div>
+                    </div>
+                </span>
+            {% endfor %}
+        </aside>
+        </div>
+    </div>
+    <footer>
+        <span id="footer_info">TelegramCryptoServer App</span>
+    </footer>
+</body>
+</html>

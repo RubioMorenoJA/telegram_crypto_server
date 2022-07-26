@@ -1,0 +1,25 @@
+.triangle-up-equilateral {
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: calc(2 * 20px * 0.866) solid green;
+    display: inline-block;
+}
+.triangle-down-equilateral {
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: calc(2 * 20px * 0.866) solid #800000;
+    display: inline-block;
+}
+.thin_horizontal_rectangle {
+    margin-top: 20%;
+    /*border-bottom: 5px solid navy;*/
+    /*border-top: 5px solid navy;*/
+    /*border-left: 20px solid navy;*/
+    /*border-right: 20px solid navy;*/
+    border-bottom: 5px solid;
+    border-top: 5px solid;
+    border-left: 20px solid;
+    border-right: 20px solid;
+    border-color: yellow;
+    display: inline-block;
+}
