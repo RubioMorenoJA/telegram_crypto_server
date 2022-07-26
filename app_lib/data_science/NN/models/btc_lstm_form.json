@@ -1,0 +1,1 @@
+{"skeleton": [{"type": "LSTM", "input": [1, 12], "output": 20, "kwargs": {"return_sequences": true}}, {"type": "Dense", "output": 1}], "compile": {"loss": "mean_squared_error", "optimizer": "adam", "metrics": ["accuracy"]}}
